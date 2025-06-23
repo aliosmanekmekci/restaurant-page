@@ -21,28 +21,34 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `* {
+___CSS_LOADER_EXPORT___.push([module.id, `/* Reset and base styles */
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
 }
 
 body {
   font-family: "Georgia", serif;
   line-height: 1.6;
   color: #333;
-  background: linear-gradient(135deg, #8b4513 0%, #d2b48c 100%);
-  min-height: 100vh;
+  background-color: #f8f8f8;
+  overflow-x: hidden;
+  width: 100%;
+  min-width: 320px;
 }
 
+/* Header and Navigation */
 header {
-  background: rgba(139, 69, 19, 0.95);
-  backdrop-filter: blur(10px);
+  background: linear-gradient(135deg, #2c5530, #3d7c47);
   padding: 1rem 0;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-  position: sticky;
-  top: 0;
-  z-index: 100;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 nav {
@@ -55,12 +61,12 @@ nav {
 }
 
 .tab-button {
-  background: transparent;
-  border: 2px solid #f5deb3;
-  color: #f5deb3;
-  padding: 0.8rem 2rem;
+  background: none;
+  border: 2px solid #fff;
+  color: #fff;
+  padding: 0.75rem 2rem;
   font-size: 1.1rem;
-  font-weight: bold;
+  font-family: inherit;
   cursor: pointer;
   border-radius: 25px;
   transition: all 0.3s ease;
@@ -69,33 +75,28 @@ nav {
 }
 
 .tab-button:hover {
-  background: #f5deb3;
-  color: #8b4513;
+  background-color: #fff;
+  color: #2c5530;
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(245, 222, 179, 0.4);
 }
 
 .tab-button.active {
-  background: #f5deb3;
-  color: #8b4513;
-  box-shadow: 0 0 20px rgba(245, 222, 179, 0.6);
+  background-color: #fff;
+  color: #2c5530;
 }
 
+/* Content Container */
 #content {
   max-width: 1200px;
-  margin: 2rem auto;
-  padding: 0 2rem;
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(10px);
-  min-height: 70vh;
+  margin: 0 auto;
+  padding: 1rem;
+  min-height: calc(100vh - 100px);
+  width: 100%;
 }
 
-.page {
-  padding: 3rem;
-  text-align: center;
-  animation: fadeIn 0.5s ease-in;
+.tab-content {
+  animation: fadeIn 0.5s ease-in-out;
+  width: 100%;
 }
 
 @keyframes fadeIn {
@@ -109,144 +110,324 @@ nav {
   }
 }
 
+/* Home Page Styles */
 .hero {
+  text-align: center;
   margin-bottom: 3rem;
+  padding: 3rem 0;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .hero h1 {
   font-size: 3.5rem;
-  color: #8b4513;
+  color: #2c5530;
   margin-bottom: 1rem;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .hero h2 {
   font-size: 1.5rem;
-  color: #cd853f;
+  color: #666;
   margin-bottom: 2rem;
   font-style: italic;
 }
 
-.hero-image {
-  width: 400px;
-  height: 300px;
-  background: linear-gradient(45deg, #8b4513, #d2b48c);
-  border-radius: 15px;
-  margin: 2rem auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 3rem;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-}
-
-.description {
+.hero p {
   font-size: 1.2rem;
-  line-height: 1.8;
-  color: #555;
   max-width: 800px;
-  margin: 0 auto;
+  margin: 0 auto 2rem;
+  color: #555;
 }
 
-.menu-grid {
+.restaurant-image {
+  background: linear-gradient(45deg, #ff6b6b, #feca57);
+  color: white;
+  padding: 4rem 2rem;
+  margin: 2rem auto;
+  border-radius: 15px;
+  font-size: 2rem;
+  max-width: 600px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.features {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
-  margin-top: 2rem;
+  margin-top: 3rem;
 }
 
-.menu-category {
-  background: #f8f8f8;
+.feature {
+  background: white;
   padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
 }
 
-.menu-category h3 {
-  color: #8b4513;
-  font-size: 1.8rem;
+.feature:hover {
+  transform: translateY(-5px);
+}
+
+.feature h3 {
+  color: #2c5530;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+/* Menu Page Styles */
+.menu-section {
+  background: white;
+  margin-bottom: 2rem;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.menu-section h2 {
+  color: #2c5530;
+  font-size: 2rem;
   margin-bottom: 1.5rem;
-  border-bottom: 2px solid #d2b48c;
+  border-bottom: 3px solid #3d7c47;
   padding-bottom: 0.5rem;
 }
 
 .menu-item {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 1rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px dotted #ccc;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
 }
 
 .menu-item:last-child {
   border-bottom: none;
-  margin-bottom: 0;
 }
 
-.item-name {
+.menu-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.menu-item-name {
   font-weight: bold;
-  color: #333;
+  font-size: 1.2rem;
+  color: #2c5530;
 }
 
-.item-price {
-  color: #8b4513;
+.menu-item-price {
   font-weight: bold;
+  color: #ff6b6b;
+  font-size: 1.1rem;
 }
 
+.menu-item-description {
+  color: #666;
+  font-style: italic;
+}
+
+/* Contact Page Styles */
 .contact-info {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
-  margin-top: 2rem;
-  text-align: left;
+  margin-bottom: 3rem;
 }
 
 .contact-section {
-  background: #f8f8f8;
+  background: white;
   padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
 .contact-section h3 {
-  color: #8b4513;
+  color: #2c5530;
   font-size: 1.5rem;
   margin-bottom: 1rem;
-  border-bottom: 2px solid #d2b48c;
-  padding-bottom: 0.5rem;
 }
 
-.contact-section p {
+.reservation-section {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.reservation-section h2 {
+  color: #2c5530;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.reservation-note {
+  background: #f0f8f0;
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin-top: 2rem;
+  border-left: 4px solid #3d7c47;
+}
+
+.reservation-note h4 {
+  color: #2c5530;
   margin-bottom: 0.5rem;
-  color: #555;
 }
 
-@media (max-width: 768px) {
-  nav {
-    flex-direction: column;
-    gap: 1rem;
+.map-section {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.map-section h3 {
+  color: #2c5530;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.map-placeholder {
+  background: linear-gradient(45deg, #74b9ff, #0984e3);
+  color: white;
+  padding: 3rem;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 14px;
   }
 
-  .tab-button {
-    padding: 0.6rem 1.5rem;
+  body {
     font-size: 1rem;
   }
 
-  .hero h1 {
-    font-size: 2.5rem;
+  header {
+    padding: 0.5rem 0;
   }
 
-  .hero-image {
-    width: 300px;
-    height: 200px;
-    font-size: 2rem;
+  nav {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0 1rem;
   }
 
-  .page {
+  .tab-button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    width: 100%;
+    margin: 0.25rem 0;
+  }
+
+  #content {
+    padding: 1rem 0.5rem;
+  }
+
+  .hero {
     padding: 2rem 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+
+  .hero h2 {
+    font-size: 1.2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .restaurant-image {
+    padding: 2rem 1rem;
+    font-size: 1.5rem;
+    margin: 1rem 0;
+  }
+
+  .features {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .feature {
+    padding: 1.5rem 1rem;
+  }
+
+  .menu-section,
+  .contact-section,
+  .reservation-section,
+  .map-section {
+    padding: 1.5rem 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .menu-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .menu-item-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+
+  .menu-item-name {
+    font-size: 1.1rem;
+  }
+
+  .contact-info {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .map-placeholder {
+    padding: 2rem 1rem;
+    font-size: 1.2rem;
   }
 }
-`, "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"AAAA;EACE,SAAS;EACT,UAAU;EACV,sBAAsB;AACxB;;AAEA;EACE,6BAA6B;EAC7B,gBAAgB;EAChB,WAAW;EACX,6DAA6D;EAC7D,iBAAiB;AACnB;;AAEA;EACE,mCAAmC;EACnC,2BAA2B;EAC3B,eAAe;EACf,yCAAyC;EACzC,gBAAgB;EAChB,MAAM;EACN,YAAY;AACd;;AAEA;EACE,iBAAiB;EACjB,cAAc;EACd,aAAa;EACb,uBAAuB;EACvB,SAAS;EACT,eAAe;AACjB;;AAEA;EACE,uBAAuB;EACvB,yBAAyB;EACzB,cAAc;EACd,oBAAoB;EACpB,iBAAiB;EACjB,iBAAiB;EACjB,eAAe;EACf,mBAAmB;EACnB,yBAAyB;EACzB,yBAAyB;EACzB,mBAAmB;AACrB;;AAEA;EACE,mBAAmB;EACnB,cAAc;EACd,2BAA2B;EAC3B,+CAA+C;AACjD;;AAEA;EACE,mBAAmB;EACnB,cAAc;EACd,6CAA6C;AAC/C;;AAEA;EACE,iBAAiB;EACjB,iBAAiB;EACjB,eAAe;EACf,qCAAqC;EACrC,mBAAmB;EACnB,0CAA0C;EAC1C,2BAA2B;EAC3B,gBAAgB;AAClB;;AAEA;EACE,aAAa;EACb,kBAAkB;EAClB,8BAA8B;AAChC;;AAEA;EACE;IACE,UAAU;IACV,2BAA2B;EAC7B;EACA;IACE,UAAU;IACV,wBAAwB;EAC1B;AACF;;AAEA;EACE,mBAAmB;AACrB;;AAEA;EACE,iBAAiB;EACjB,cAAc;EACd,mBAAmB;EACnB,2CAA2C;AAC7C;;AAEA;EACE,iBAAiB;EACjB,cAAc;EACd,mBAAmB;EACnB,kBAAkB;AACpB;;AAEA;EACE,YAAY;EACZ,aAAa;EACb,oDAAoD;EACpD,mBAAmB;EACnB,iBAAiB;EACjB,aAAa;EACb,mBAAmB;EACnB,uBAAuB;EACvB,eAAe;EACf,yCAAyC;AAC3C;;AAEA;EACE,iBAAiB;EACjB,gBAAgB;EAChB,WAAW;EACX,gBAAgB;EAChB,cAAc;AAChB;;AAEA;EACE,aAAa;EACb,2DAA2D;EAC3D,SAAS;EACT,gBAAgB;AAClB;;AAEA;EACE,mBAAmB;EACnB,aAAa;EACb,mBAAmB;EACnB,yCAAyC;AAC3C;;AAEA;EACE,cAAc;EACd,iBAAiB;EACjB,qBAAqB;EACrB,gCAAgC;EAChC,sBAAsB;AACxB;;AAEA;EACE,aAAa;EACb,8BAA8B;EAC9B,mBAAmB;EACnB,sBAAsB;EACtB,8BAA8B;AAChC;;AAEA;EACE,mBAAmB;EACnB,gBAAgB;AAClB;;AAEA;EACE,iBAAiB;EACjB,WAAW;AACb;;AAEA;EACE,cAAc;EACd,iBAAiB;AACnB;;AAEA;EACE,aAAa;EACb,2DAA2D;EAC3D,SAAS;EACT,gBAAgB;EAChB,gBAAgB;AAClB;;AAEA;EACE,mBAAmB;EACnB,aAAa;EACb,mBAAmB;EACnB,yCAAyC;AAC3C;;AAEA;EACE,cAAc;EACd,iBAAiB;EACjB,mBAAmB;EACnB,gCAAgC;EAChC,sBAAsB;AACxB;;AAEA;EACE,qBAAqB;EACrB,WAAW;AACb;;AAEA;EACE;IACE,sBAAsB;IACtB,SAAS;EACX;;EAEA;IACE,sBAAsB;IACtB,eAAe;EACjB;;EAEA;IACE,iBAAiB;EACnB;;EAEA;IACE,YAAY;IACZ,aAAa;IACb,eAAe;EACjB;;EAEA;IACE,kBAAkB;EACpB;AACF","sourcesContent":["* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n\nbody {\n  font-family: \"Georgia\", serif;\n  line-height: 1.6;\n  color: #333;\n  background: linear-gradient(135deg, #8b4513 0%, #d2b48c 100%);\n  min-height: 100vh;\n}\n\nheader {\n  background: rgba(139, 69, 19, 0.95);\n  backdrop-filter: blur(10px);\n  padding: 1rem 0;\n  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);\n  position: sticky;\n  top: 0;\n  z-index: 100;\n}\n\nnav {\n  max-width: 1200px;\n  margin: 0 auto;\n  display: flex;\n  justify-content: center;\n  gap: 2rem;\n  padding: 0 2rem;\n}\n\n.tab-button {\n  background: transparent;\n  border: 2px solid #f5deb3;\n  color: #f5deb3;\n  padding: 0.8rem 2rem;\n  font-size: 1.1rem;\n  font-weight: bold;\n  cursor: pointer;\n  border-radius: 25px;\n  transition: all 0.3s ease;\n  text-transform: uppercase;\n  letter-spacing: 1px;\n}\n\n.tab-button:hover {\n  background: #f5deb3;\n  color: #8b4513;\n  transform: translateY(-2px);\n  box-shadow: 0 5px 15px rgba(245, 222, 179, 0.4);\n}\n\n.tab-button.active {\n  background: #f5deb3;\n  color: #8b4513;\n  box-shadow: 0 0 20px rgba(245, 222, 179, 0.6);\n}\n\n#content {\n  max-width: 1200px;\n  margin: 2rem auto;\n  padding: 0 2rem;\n  background: rgba(255, 255, 255, 0.95);\n  border-radius: 15px;\n  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);\n  backdrop-filter: blur(10px);\n  min-height: 70vh;\n}\n\n.page {\n  padding: 3rem;\n  text-align: center;\n  animation: fadeIn 0.5s ease-in;\n}\n\n@keyframes fadeIn {\n  from {\n    opacity: 0;\n    transform: translateY(20px);\n  }\n  to {\n    opacity: 1;\n    transform: translateY(0);\n  }\n}\n\n.hero {\n  margin-bottom: 3rem;\n}\n\n.hero h1 {\n  font-size: 3.5rem;\n  color: #8b4513;\n  margin-bottom: 1rem;\n  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);\n}\n\n.hero h2 {\n  font-size: 1.5rem;\n  color: #cd853f;\n  margin-bottom: 2rem;\n  font-style: italic;\n}\n\n.hero-image {\n  width: 400px;\n  height: 300px;\n  background: linear-gradient(45deg, #8b4513, #d2b48c);\n  border-radius: 15px;\n  margin: 2rem auto;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 3rem;\n  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);\n}\n\n.description {\n  font-size: 1.2rem;\n  line-height: 1.8;\n  color: #555;\n  max-width: 800px;\n  margin: 0 auto;\n}\n\n.menu-grid {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));\n  gap: 2rem;\n  margin-top: 2rem;\n}\n\n.menu-category {\n  background: #f8f8f8;\n  padding: 2rem;\n  border-radius: 10px;\n  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);\n}\n\n.menu-category h3 {\n  color: #8b4513;\n  font-size: 1.8rem;\n  margin-bottom: 1.5rem;\n  border-bottom: 2px solid #d2b48c;\n  padding-bottom: 0.5rem;\n}\n\n.menu-item {\n  display: flex;\n  justify-content: space-between;\n  margin-bottom: 1rem;\n  padding-bottom: 0.5rem;\n  border-bottom: 1px dotted #ccc;\n}\n\n.menu-item:last-child {\n  border-bottom: none;\n  margin-bottom: 0;\n}\n\n.item-name {\n  font-weight: bold;\n  color: #333;\n}\n\n.item-price {\n  color: #8b4513;\n  font-weight: bold;\n}\n\n.contact-info {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));\n  gap: 2rem;\n  margin-top: 2rem;\n  text-align: left;\n}\n\n.contact-section {\n  background: #f8f8f8;\n  padding: 2rem;\n  border-radius: 10px;\n  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);\n}\n\n.contact-section h3 {\n  color: #8b4513;\n  font-size: 1.5rem;\n  margin-bottom: 1rem;\n  border-bottom: 2px solid #d2b48c;\n  padding-bottom: 0.5rem;\n}\n\n.contact-section p {\n  margin-bottom: 0.5rem;\n  color: #555;\n}\n\n@media (max-width: 768px) {\n  nav {\n    flex-direction: column;\n    gap: 1rem;\n  }\n\n  .tab-button {\n    padding: 0.6rem 1.5rem;\n    font-size: 1rem;\n  }\n\n  .hero h1 {\n    font-size: 2.5rem;\n  }\n\n  .hero-image {\n    width: 300px;\n    height: 200px;\n    font-size: 2rem;\n  }\n\n  .page {\n    padding: 2rem 1rem;\n  }\n}\n"],"sourceRoot":""}]);
+
+@media screen and (max-width: 480px) {
+  html {
+    font-size: 13px;
+  }
+
+  .hero h1 {
+    font-size: 1.5rem;
+  }
+
+  .hero h2 {
+    font-size: 1rem;
+  }
+
+  .restaurant-image {
+    font-size: 1.2rem;
+    padding: 1.5rem 0.5rem;
+  }
+
+  .menu-section,
+  .contact-section,
+  .reservation-section,
+  .map-section {
+    padding: 1rem 0.5rem;
+  }
+
+  .feature {
+    padding: 1rem 0.5rem;
+  }
+}
+`, "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"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","sourcesContent":["/* Reset and base styles */\n* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n\nhtml {\n  font-size: 16px;\n  -webkit-text-size-adjust: 100%;\n  -ms-text-size-adjust: 100%;\n}\n\nbody {\n  font-family: \"Georgia\", serif;\n  line-height: 1.6;\n  color: #333;\n  background-color: #f8f8f8;\n  overflow-x: hidden;\n  width: 100%;\n  min-width: 320px;\n}\n\n/* Header and Navigation */\nheader {\n  background: linear-gradient(135deg, #2c5530, #3d7c47);\n  padding: 1rem 0;\n  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);\n}\n\nnav {\n  max-width: 1200px;\n  margin: 0 auto;\n  display: flex;\n  justify-content: center;\n  gap: 2rem;\n  padding: 0 2rem;\n}\n\n.tab-button {\n  background: none;\n  border: 2px solid #fff;\n  color: #fff;\n  padding: 0.75rem 2rem;\n  font-size: 1.1rem;\n  font-family: inherit;\n  cursor: pointer;\n  border-radius: 25px;\n  transition: all 0.3s ease;\n  text-transform: uppercase;\n  letter-spacing: 1px;\n}\n\n.tab-button:hover {\n  background-color: #fff;\n  color: #2c5530;\n  transform: translateY(-2px);\n}\n\n.tab-button.active {\n  background-color: #fff;\n  color: #2c5530;\n}\n\n/* Content Container */\n#content {\n  max-width: 1200px;\n  margin: 0 auto;\n  padding: 1rem;\n  min-height: calc(100vh - 100px);\n  width: 100%;\n}\n\n.tab-content {\n  animation: fadeIn 0.5s ease-in-out;\n  width: 100%;\n}\n\n@keyframes fadeIn {\n  from {\n    opacity: 0;\n    transform: translateY(20px);\n  }\n  to {\n    opacity: 1;\n    transform: translateY(0);\n  }\n}\n\n/* Home Page Styles */\n.hero {\n  text-align: center;\n  margin-bottom: 3rem;\n  padding: 3rem 0;\n  background: white;\n  border-radius: 15px;\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);\n}\n\n.hero h1 {\n  font-size: 3.5rem;\n  color: #2c5530;\n  margin-bottom: 1rem;\n  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);\n}\n\n.hero h2 {\n  font-size: 1.5rem;\n  color: #666;\n  margin-bottom: 2rem;\n  font-style: italic;\n}\n\n.hero p {\n  font-size: 1.2rem;\n  max-width: 800px;\n  margin: 0 auto 2rem;\n  color: #555;\n}\n\n.restaurant-image {\n  background: linear-gradient(45deg, #ff6b6b, #feca57);\n  color: white;\n  padding: 4rem 2rem;\n  margin: 2rem auto;\n  border-radius: 15px;\n  font-size: 2rem;\n  max-width: 600px;\n  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);\n}\n\n.features {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));\n  gap: 2rem;\n  margin-top: 3rem;\n}\n\n.feature {\n  background: white;\n  padding: 2rem;\n  border-radius: 15px;\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);\n  text-align: center;\n  transition: transform 0.3s ease;\n}\n\n.feature:hover {\n  transform: translateY(-5px);\n}\n\n.feature h3 {\n  color: #2c5530;\n  margin-bottom: 1rem;\n  font-size: 1.5rem;\n}\n\n/* Menu Page Styles */\n.menu-section {\n  background: white;\n  margin-bottom: 2rem;\n  padding: 2rem;\n  border-radius: 15px;\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);\n}\n\n.menu-section h2 {\n  color: #2c5530;\n  font-size: 2rem;\n  margin-bottom: 1.5rem;\n  border-bottom: 3px solid #3d7c47;\n  padding-bottom: 0.5rem;\n}\n\n.menu-item {\n  margin-bottom: 1.5rem;\n  padding-bottom: 1rem;\n  border-bottom: 1px solid #eee;\n}\n\n.menu-item:last-child {\n  border-bottom: none;\n}\n\n.menu-item-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin-bottom: 0.5rem;\n}\n\n.menu-item-name {\n  font-weight: bold;\n  font-size: 1.2rem;\n  color: #2c5530;\n}\n\n.menu-item-price {\n  font-weight: bold;\n  color: #ff6b6b;\n  font-size: 1.1rem;\n}\n\n.menu-item-description {\n  color: #666;\n  font-style: italic;\n}\n\n/* Contact Page Styles */\n.contact-info {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));\n  gap: 2rem;\n  margin-bottom: 3rem;\n}\n\n.contact-section {\n  background: white;\n  padding: 2rem;\n  border-radius: 15px;\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);\n  text-align: center;\n}\n\n.contact-section h3 {\n  color: #2c5530;\n  font-size: 1.5rem;\n  margin-bottom: 1rem;\n}\n\n.reservation-section {\n  background: white;\n  padding: 2rem;\n  border-radius: 15px;\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);\n  margin-bottom: 2rem;\n}\n\n.reservation-section h2 {\n  color: #2c5530;\n  font-size: 2rem;\n  margin-bottom: 1rem;\n}\n\n.reservation-note {\n  background: #f0f8f0;\n  padding: 1.5rem;\n  border-radius: 10px;\n  margin-top: 2rem;\n  border-left: 4px solid #3d7c47;\n}\n\n.reservation-note h4 {\n  color: #2c5530;\n  margin-bottom: 0.5rem;\n}\n\n.map-section {\n  background: white;\n  padding: 2rem;\n  border-radius: 15px;\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);\n  text-align: center;\n}\n\n.map-section h3 {\n  color: #2c5530;\n  font-size: 1.5rem;\n  margin-bottom: 1rem;\n}\n\n.map-placeholder {\n  background: linear-gradient(45deg, #74b9ff, #0984e3);\n  color: white;\n  padding: 3rem;\n  border-radius: 10px;\n  font-size: 1.5rem;\n  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);\n}\n\n/* Responsive Design */\n@media screen and (max-width: 768px) {\n  html {\n    font-size: 14px;\n  }\n\n  body {\n    font-size: 1rem;\n  }\n\n  header {\n    padding: 0.5rem 0;\n  }\n\n  nav {\n    flex-direction: column;\n    gap: 0.5rem;\n    padding: 0 1rem;\n  }\n\n  .tab-button {\n    padding: 0.5rem 1rem;\n    font-size: 1rem;\n    width: 100%;\n    margin: 0.25rem 0;\n  }\n\n  #content {\n    padding: 1rem 0.5rem;\n  }\n\n  .hero {\n    padding: 2rem 1rem;\n    margin-bottom: 2rem;\n  }\n\n  .hero h1 {\n    font-size: 2rem;\n    line-height: 1.2;\n  }\n\n  .hero h2 {\n    font-size: 1.2rem;\n  }\n\n  .hero p {\n    font-size: 1rem;\n  }\n\n  .restaurant-image {\n    padding: 2rem 1rem;\n    font-size: 1.5rem;\n    margin: 1rem 0;\n  }\n\n  .features {\n    grid-template-columns: 1fr;\n    gap: 1rem;\n  }\n\n  .feature {\n    padding: 1.5rem 1rem;\n  }\n\n  .menu-section,\n  .contact-section,\n  .reservation-section,\n  .map-section {\n    padding: 1.5rem 1rem;\n    margin-bottom: 1rem;\n  }\n\n  .menu-section h2 {\n    font-size: 1.5rem;\n  }\n\n  .menu-item-header {\n    flex-direction: column;\n    align-items: flex-start;\n    gap: 0.25rem;\n  }\n\n  .menu-item-name {\n    font-size: 1.1rem;\n  }\n\n  .contact-info {\n    grid-template-columns: 1fr;\n    gap: 1rem;\n  }\n\n  .map-placeholder {\n    padding: 2rem 1rem;\n    font-size: 1.2rem;\n  }\n}\n\n@media screen and (max-width: 480px) {\n  html {\n    font-size: 13px;\n  }\n\n  .hero h1 {\n    font-size: 1.5rem;\n  }\n\n  .hero h2 {\n    font-size: 1rem;\n  }\n\n  .restaurant-image {\n    font-size: 1.2rem;\n    padding: 1.5rem 0.5rem;\n  }\n\n  .menu-section,\n  .contact-section,\n  .reservation-section,\n  .map-section {\n    padding: 1rem 0.5rem;\n  }\n\n  .feature {\n    padding: 1rem 0.5rem;\n  }\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
