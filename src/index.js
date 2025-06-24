@@ -8,6 +8,8 @@ import { setActiveTab } from "./scripts/set-active-tab";
 document.addEventListener("DOMContentLoaded", () => {
   console.log("Restaurant page loaded!");
 
+  console.log(homeBtn, menuBtn, contactBtn);
+
   const homeBtn = document.getElementById("home");
   const menuBtn = document.getElementById("menu");
   const contactBtn = document.getElementById("contact");
